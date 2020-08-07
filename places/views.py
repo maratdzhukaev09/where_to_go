@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.urls import reverse
 from .models import Place, Image
 import json
 
@@ -16,7 +17,7 @@ def show_map(request):
             "properties": {
                 "title": place.title,
                 "placeId": place.id,
-                "detailsUrl": "static/places/moscow_legends.json"
+                "detailsUrl": reverse("place-json", args=[place.id])
             }
         }
         features.append(feature)
