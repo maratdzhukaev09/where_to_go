@@ -11,11 +11,20 @@ class Place(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+    class Meta:
+        verbose_name = 'Место'
+        verbose_name_plural = 'Места'
+
 
 class Image(models.Model):
     image = models.ImageField(verbose_name='Фотография')
     place = models.ForeignKey(to='Place', verbose_name='Место', on_delete=models.CASCADE, null=True, related_name='images')
-    number = models.IntegerField(verbose_name='Номер картинки', null=True, blank=True)
+    number = models.IntegerField(verbose_name='Номер картинки', null=True, blank=True, default=0)
 
     def __str__(self):
         return f'{self.number} {self.place.title}' if self.number else f'{self.place.title}'
+
+    class Meta:
+        verbose_name = 'Фотография'
+        verbose_name_plural = 'Фотографии'
+        ordering = ['number']
