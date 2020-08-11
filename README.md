@@ -74,4 +74,4 @@ There're 2 variables:
 
 ## Project's Purposes
 
-The code written for educational purposes - this is a lesson in Python and web-development course on the site [Devman](https://dvmn.org/).
+The code is written for educational purposes - this is a lesson in Python and web-development course on the site [Devman](https://dvmn.org/).
