@@ -21,11 +21,12 @@ class Command(BaseCommand):
             'lat': place_info['coordinates']['lat'],
             'lon': place_info['coordinates']['lng'],
         })[0]
+        if os.path.exists(os.path.join(BASE_DIR, 'media')):
+            for image in place.images.all():
+                os.remove(os.path.join(BASE_DIR, image.image.path))
         place.images.all().delete()
         for image_number, image_url in enumerate(place_info['imgs']):
             filename = image_url.split('/')[-1]
-            if filename in os.listdir(os.path.join(BASE_DIR, 'media')):
-                os.remove(os.path.join(BASE_DIR, os.path.join('media', filename)))
             response = requests.get(image_url)
             content = ContentFile(response.content)
             image_object = Image()
