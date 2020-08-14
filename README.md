@@ -44,6 +44,35 @@ $ python manage.py runserver
 ```
 Use `python3` if there're conflicts with Python 2.
 
+## Management Commands
+
+### `load_place`
+
+Adds new place taking information from json file. 
+
+Use command:
+```bash
+$ python manage.py load_place https://json/file/url
+```
+
+Json file format:
+```json
+{
+    "title": "Title",
+    "imgs": [
+        "https://image/url",
+        "https://image/url",
+        "https://image/url"
+    ],
+    "description_short": "Short description.",
+    "description_long": "Long description",
+    "coordinates": {
+        "lng": "00.00000",
+        "lat": "00.00000"
+    }
+}
+```
+
 ## Models
 
 - `Place` - places
