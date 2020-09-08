@@ -131,4 +131,4 @@ dmypy.json
 media/
 
 # Collect Static
-assets/
+static/
