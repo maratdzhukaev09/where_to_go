@@ -25,5 +25,4 @@ urlpatterns = [
     path('', views.show_map),
     path('places/<int:place_id>/', views.show_post_json, name="place-json"),
     path('tinymce/', include('tinymce.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
- + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
