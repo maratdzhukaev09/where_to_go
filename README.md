@@ -1,6 +1,6 @@
 # Where to go - Moscow with Artem's eyes
 
-Site about the most interesting places in Moscow. Artem's project.
+Website about the most interesting places in Moscow. Artem's project.
 
 Example of the website is [there](http://maradz09.pythonanywhere.com/).
 
@@ -105,4 +105,4 @@ There're 2 variables:
 
 ## Project's Purposes
 
-The code is written for educational purposes - this is a lesson in Python and web-development course on the site [Devman](https://dvmn.org/).
+The code is written for educational purposes - this is a lesson in Python and web-development course on the [Devman](https://dvmn.org/) website.
