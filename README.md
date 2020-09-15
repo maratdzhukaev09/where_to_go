@@ -2,6 +2,8 @@
 
 Site about the most interesting places in Moscow. Artem's project.
 
+Example of the website is [there](http://maradz09.pythonanywhere.com/).
+
 ## Installation
 
 Python 3 must be installed.
