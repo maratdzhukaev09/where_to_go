@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.urls import reverse
 from .models import Place, Image
 import json
@@ -46,5 +46,4 @@ def show_post_json(request, place_id):
         }
     }
 
-    return HttpResponse(json.dumps(place_details, ensure_ascii=False),
-                        content_type="application/json")
+    return JsonResponse(place_details, safe=False, json_dumps_params={'ensure_ascii': False})
