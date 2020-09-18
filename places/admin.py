@@ -23,3 +23,4 @@ class PlaceAdmin(admin.ModelAdmin):
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     raw_id_fields = ['place']
+    ordering = ['place__title', 'number']

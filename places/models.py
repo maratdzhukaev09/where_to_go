@@ -19,8 +19,8 @@ class Place(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(verbose_name='Фотография')
-    place = models.ForeignKey(to='Place', verbose_name='Место', on_delete=models.CASCADE, null=True, related_name='images')
-    number = models.IntegerField(verbose_name='Номер картинки', null=True, blank=True, default=0)
+    place = models.ForeignKey(to='Place', verbose_name='Место', on_delete=models.CASCADE, related_name='images')
+    number = models.IntegerField(verbose_name='Номер картинки', blank=True, default=0)
 
     def __str__(self):
         return f'{self.number} {self.place.title}' if self.number else (f'{self.place.title}' if self.place else f'No Place {self.id}')
@@ -28,4 +28,4 @@ class Image(models.Model):
     class Meta:
         verbose_name = 'Фотография'
         verbose_name_plural = 'Фотографии'
-        ordering = ['place__title', 'number']
+        ordering = ['number']
