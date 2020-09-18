@@ -2,7 +2,7 @@
 
 Website about the most interesting places in Moscow. Artem's project.
 
-Example of the website is [there](http://maradz09.pythonanywhere.com/).
+Example of the website you can see [here](http://maradz09.pythonanywhere.com/).
 
 ## Installation
 
