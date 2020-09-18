@@ -75,19 +75,6 @@ Json file format:
 }
 ```
 
-## Models
-
-- `Place` - places
-    - `title` - name, `CharField`
-    - `short_description` - short description, `TextField`
-    - `long_description` - long description, `HTMLField` ([more](https://github.com/aljosa/django-tinymce))
-    - `lat` - latitude, `FloatField`
-    - `lon` - longitude, `FloatField`
-- `Image` - images
-    - `image` - image itself, `ImageField`
-    - `place` - place, `ForeignKey`
-    - `number` - index number, `IntegerField`
-
 ## Environment Variables
 
 Some of settings are taken from environment variables. To define them, create `.env` file on the same level with `manage.py` and write data there in this format:`VARIABLE=value`.
