@@ -16,12 +16,12 @@ class Command(BaseCommand):
         response = requests.get(json_url)
         response.raise_for_status()
         place_info = response.json()
-        place = Place.objects.get_or_create(title=place_info['title'], defaults={
+        place, is_new_object = Place.objects.get_or_create(title=place_info['title'], defaults={
             'short_description': place_info['description_short'],
             'long_description': place_info['description_long'],
             'lat': place_info['coordinates']['lat'],
             'lon': place_info['coordinates']['lng'],
-        })[0]
+        })
         if os.path.exists(os.path.join(BASE_DIR, 'media')):
             for image in place.images.all():
                 os.remove(os.path.join(BASE_DIR, image.image.path))
