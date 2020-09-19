@@ -26,7 +26,7 @@ class Command(BaseCommand):
             for image in place.images.all():
                 os.remove(os.path.join(BASE_DIR, image.image.path))
         place.images.all().delete()
-        for image_number, image_url in enumerate(place_info['imgs']):
+        for image_number, image_url in enumerate(place_info['imgs'], start=1):
             filename = image_url.split('/')[-1]
             try:
                 response = requests.get(image_url)
@@ -37,5 +37,5 @@ class Command(BaseCommand):
             content = ContentFile(response.content)
             image_object = Image.objects.create(place=place)
             image_object.image.save(filename, content, save=True)
-            image_object.number = image_number + 1
+            image_object.number = image_number
             image_object.save()
