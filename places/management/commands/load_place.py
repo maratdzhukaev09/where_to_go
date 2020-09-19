@@ -9,10 +9,10 @@ class Command(BaseCommand):
     help = 'Load places from json files to database'
 
     def add_arguments(self, parser):
-        parser.add_argument('json_url', nargs='+', type=str)
+        parser.add_argument('json_url', type=str)
 
     def handle(self, *args, **options):
-        json_url = options['json_url'][0]
+        json_url = options['json_url']
         response = requests.get(json_url)
         response.raise_for_status()
         place_info = response.json()
