@@ -14,6 +14,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         json_url = options['json_url'][0]
         response = requests.get(json_url)
+        response.raise_for_status()
         place_info = response.json()
         place = Place.objects.get_or_create(title=place_info['title'], defaults={
             'short_description': place_info['description_short'],
@@ -27,10 +28,14 @@ class Command(BaseCommand):
         place.images.all().delete()
         for image_number, image_url in enumerate(place_info['imgs']):
             filename = image_url.split('/')[-1]
-            response = requests.get(image_url)
+            try:
+                response = requests.get(image_url)
+                response.raise_for_status()
+            except requests.exceptions.HTTPError:
+                print(f"Can't download photo: '{image_url}'")
+                continue
             content = ContentFile(response.content)
-            image_object = Image()
+            image_object = Image.objects.create(place=place)
             image_object.image.save(filename, content, save=True)
-            image_object.place = place
             image_object.number = image_number + 1
             image_object.save()
