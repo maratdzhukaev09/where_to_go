@@ -34,8 +34,7 @@ class Command(BaseCommand):
             except requests.exceptions.HTTPError:
                 print(f"Can't download photo: '{image_url}'")
                 continue
+            image_object = Image.objects.create(place=place, number=image_number)
             content = ContentFile(response.content)
-            image_object = Image.objects.create(place=place)
             image_object.image.save(filename, content, save=True)
-            image_object.number = image_number
             image_object.save()
