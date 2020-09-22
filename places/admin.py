@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.utils.html import format_html, mark_safe
+from django.utils.html import format_html
 from .models import Place, Image
 from adminsortable2.admin import SortableInlineAdminMixin
 
@@ -12,7 +12,10 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     extra = 0
 
     def get_preview(self, image):
-        return format_html('<img src="{}" height=200px />', image.image.url)
+        try:
+            return format_html('<img src="{}" height=200px />', image.image.url)
+        except ValueError:
+            return 'Фотография не добавлена'
 
 
 @admin.register(Place)
