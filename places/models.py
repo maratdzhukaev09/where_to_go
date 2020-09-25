@@ -23,7 +23,7 @@ class Image(models.Model):
     number = models.IntegerField(verbose_name='Номер картинки', blank=True, default=0)
 
     def __str__(self):
-        return f'{self.number} {self.place.title}' if self.number else (f'{self.place.title}' if self.place else f'No Place {self.id}')
+        return f'{self.number} {self.place.title}'
 
     class Meta:
         verbose_name = 'Фотография'
