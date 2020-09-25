@@ -12,9 +12,9 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     extra = 0
 
     def get_preview(self, image):
-        try:
+        if image in Image.objects.all():
             return format_html('<img src="{}" height=200px />', image.image.url)
-        except ValueError:
+        else:
             return 'Фотография не добавлена'
 
 
